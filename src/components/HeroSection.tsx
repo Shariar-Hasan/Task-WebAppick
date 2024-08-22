@@ -2,8 +2,7 @@ import { GoArrowUpRight } from 'react-icons/go';
 import Navbar from './Navbar';
 import Button from './shared/Button';
 import SpecialText from './shared/SpecialText';
-import { FaDiscord, FaFacebook, FaTwitter } from 'react-icons/fa';
-import { FaSquareInstagram } from 'react-icons/fa6';
+import { socialRoutes } from '../utilites/routes';
 const HeroSection = () => {
     return (
         <header className='bg-primary text-white'>
@@ -11,8 +10,8 @@ const HeroSection = () => {
             <div className='grid grid-cols-2 container mx-auto gap-4'>
                 <div className='flex items-start justify-center flex-col pr-[146px]'>
                     <h1 className='text-4xl font-semibold leading-[60px]'>
-                        There is <SpecialText>always</SpecialText> something new
-                        for us to learn
+                        There is <SpecialText isUnderLined>always</SpecialText>{' '}
+                        something new for us to learn
                     </h1>
                     <p className='text-white  leading-[30px] font-light py-3'>
                         we have created more than 100+ materials on various
@@ -27,21 +26,13 @@ const HeroSection = () => {
                             Start Journey <GoArrowUpRight />
                         </Button>
                         <ul className='flex items-center space-x-4 text-xl'>
-                            <li>
-                                <a href='#'>
-                                    <FaSquareInstagram />
-                                </a>
-                            </li>
-                            <li>
-                                <a href='#'>
-                                    <FaTwitter />
-                                </a>
-                            </li>
-                            <li>
-                                <a href='#'>
-                                    <FaDiscord />
-                                </a>
-                            </li>
+                            {socialRoutes.map(({ title, icon, path }) => (
+                                <li>
+                                    <a href={path} title={title}>
+                                        {icon}
+                                    </a>
+                                </li>
+                            ))}
                         </ul>
                     </div>
                 </div>
